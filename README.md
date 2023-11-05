@@ -5,7 +5,7 @@ I have currently not yet decided on how to implement the structure of the crate,
 
 The original Twelve API documentation can be found [here](https://clientapi.twelve.eu/index.html). You can request your publickey, privatekey and clientid from Twelve by emailing them.
 
-**NOTE:** If you use the API without this crate, please remember that the API keys should be in pure lowercase. Otherwise you will get an authentication error.
+**NOTE:** If you use the API without this crate, please remember that the API keys should be in pure UPPERCASE. Otherwise you will get an authentication error.
 
 
 
