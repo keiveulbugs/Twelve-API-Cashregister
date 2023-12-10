@@ -2,9 +2,9 @@ pub mod products;
 
 #[derive(Debug, PartialEq)]
 pub struct TwelveClient {
-    privatekey: String,
-    publickey: String,
-    clientid: i32,
+    pub privatekey: String,
+    pub publickey: String,
+    pub clientid: i32,
 }
 
 impl TwelveClient {
@@ -30,9 +30,51 @@ impl TwelveClient {
     }
 }
 
+
+#[derive(Debug, PartialEq)]
+struct MyData {
+    required_field1: String,
+    required_field2: i32,
+    optional_field1: Option<String>,
+    optional_field2: Option<i32>,
+}
+
+impl MyData {
+    fn new(required_field1: String, required_field2: i32) -> Self {
+        MyData {
+            required_field1,
+            required_field2,
+            optional_field1: None,
+            optional_field2: None,
+        }
+    }
+
+    fn with_optional_field1(mut self, value: String) -> Self {
+        self.optional_field1 = Some(value);
+        self
+    }
+
+    fn with_optional_field2(mut self, value: i32) -> Self {
+        self.optional_field2 = Some(value);
+        self
+    }
+}
+
+
 #[cfg(test)]
 mod clienttest {
     use super::*;
+
+    #[test]
+    fn testinginject() {
+        let data1 = MyData::new("value1".to_string(), 42);
+        let data2 = MyData::new("value2".to_string(), 100)
+            .with_optional_field1("optional_value".to_string());
+        let data3 = MyData::new("value3".to_string(), 200)
+            .with_optional_field2(123);
+
+        println!("{:#?}\n{:#?}\n{:#?}", data1, data2, data3);
+    }
 
     #[test]
     fn buildingaclientworks() {
@@ -70,6 +112,7 @@ mod clienttest {
             .unwrap();
         let client = TwelveClient::new(privatekey, publickey, clientid);
         let test = TwelveClient::getproducts(client, Some(true), None).await;
+        
     }
 
     /// Reads the .env file and tries to find the .env variable.
