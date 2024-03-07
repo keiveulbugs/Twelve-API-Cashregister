@@ -1,3 +1,6 @@
+# NOTE: No longer in development
+**I Stopped working on this project as the Twelve api is dogshit and garbage. It is unreliable, is missing a lot of functionality, and does for some calls not fetch real time data but only old data.**
+
 # A wrapper around the Twelve api
 The goal of this crate is to form a wrapper around the Twelve API. This to make the use of the API easier as the current API of Twelve is just not that ergonomic to work with. The API calls added will be based on what I personally need first. Especially as there are 36 different API endpoints with almost all multiple functions (get, post, patch delete).
 
